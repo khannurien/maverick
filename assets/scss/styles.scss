@@ -4,7 +4,7 @@
 }
 
 body {
-    font: 1rem/1.5 -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica,helvetica neue,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
+    font: 1rem/1.5 -apple-system,noto sans,BlinkMacSystemFont,avenir next,avenir,helvetica,helvetica neue,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -246,4 +246,15 @@ img {
     margin: -10px 0 0 15px;
     float: right;
     border-radius: 50%;
+}
+
+ul#breadcrumbs li {
+    display: inline;
+    text-align: center;
+    padding: 0.2rem;
+    margin: 0;
+}
+
+ul#breadcrumbs li::before {
+    content: "⇱ ";
 }
