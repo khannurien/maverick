@@ -8,7 +8,7 @@
     {{ partial "header.html" . }}
     <section>
       {{ partial "breadcrumbs.html" . }}
-      <h2 class="post">{{ .Title }}</h2>
+      <h2 class="post {{ if .Params.hide_title }}hidden{{ end }}">{{ .Title }}</h2>
       {{ if eq .Section "posts" }}
       <div class="post-date">
         <span class="g time">📅 {{.Date.Format "January 2, 2006"}} </span> &#8212;
@@ -25,6 +25,28 @@
     {{ if eq .Section "posts" }}
     <div id="comments">
       {{ partial "comments.html" $ }}
+    </div>
+    {{ end }}
+    {{ if eq .Section "essential" }}
+    <div class="essential">
+      <div class="wrapper">
+        {{ range $index, $record := .Params.records }}
+          <div class="essential-item">
+            <div class="essential-item-header">
+              <span>{{ $record.artist }} - <a href="{{ $record.url_discogs }}">{{ $record.album }}</a> ({{ $record.year }})</span>
+            </div>
+            <div class="essential-item-content">
+              <img src="../{{ $record.cover }}" />
+            </div>
+            <div class="essential-item-footer">
+              {{ range $youtube_link := $record.youtube_links }}
+                <a href="{{ .url }}">{{ .name }}</a>
+              {{ end }}
+            </div>
+          </div>
+        {{ end }}
+        </div>
+      </div>
     </div>
     {{ end }}
   </div>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  {{ partial "head.html" . }}
+  <body>
+    <a class="skip-link" href="#main">Skip to main</a>
+    <main id="main">
+      <div class="content">
+        {{ partial "header.html" . }}
+        <section>
+          {{ partial "breadcrumbs.html" . }}
+          {{ if (eq .CurrentSection .FirstSection) }}
+            <ul>
+              {{ range .Sections.ByTitle }}
+                <li>            
+                  <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                  {{ partial "recursive.html" . }}
+                </li>
+              {{ end }}
+            </ul>
+          {{ else }}
+            <ul class="postlist">
+              {{ range .RegularPages }}
+              <li>
+                <a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a>
+              </li>
+              {{ end }}
+            </ul>
+          {{ end }}
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

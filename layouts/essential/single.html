@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  {{ partial "head.html" . }}
+  <body>
+    <a class="skip-link" href="#main">Skip to main</a>
+    <main id="main">
+      <div class="content">
+        {{ partial "header.html" . }}
+        <section>
+          {{ partial "breadcrumbs.html" . }}
+          <div class="essential">
+            <div class="wrapper">
+              {{ range $index, $record := .Params.records }}
+                <div class="essential-item">
+                  <div class="essential-item-header">
+                    <span>{{ $record.artist }} - <a href="{{ $record.url_discogs }}">{{ $record.album }}</a> ({{ $record.year }})</span>
+                  </div>
+                  <div class="essential-item-content">
+                    <img src="../{{ $record.cover }}" />
+                  </div>
+                  <div class="essential-item-footer">
+                    {{ range $youtube_link := $record.youtube_links }}
+                      <a href="{{ .url }}">{{ .name }}</a>
+                    {{ end }}
+                  </div>
+                </div>
+              {{ end }}
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
