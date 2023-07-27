@@ -1,4 +1,4 @@
-body {
+html {
     width: 100vw;
 }
 
@@ -38,8 +38,10 @@ ul#breadcrumbs li::before {
 .essential-item > .essential-item-content {
     margin-top: auto;
     margin-bottom: auto;
-    // border-top: 1px solid grey;
-    // border-bottom: 1px solid grey;
+}
+
+.modal-open {
+    overflow: hidden;
 }
 
  /* The Modal (background) */
@@ -62,7 +64,8 @@ ul#breadcrumbs li::before {
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 30%; /* Could be more or less, depending on screen size */
+    text-align: center;
 }
 
 /* The Close Button */

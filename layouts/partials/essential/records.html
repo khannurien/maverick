@@ -9,11 +9,18 @@
   <div class="essential-item-footer">
     {{ range $youtube_index, $youtube := $record.youtube_links }}
       <a href="{{ $youtube.url }}">{{ $youtube.name }}</a>
-      {{ partial "essential/youtube.html" (dict "context_id" $record_index "context" $record "youtube_id" $youtube_index "youtube" $youtube) }}
     {{ end }}
   </div>
 </div>
 {{ end }}
+
+<div id="modal-node">
+  {{ range $record_index, $record := .Params.records }}
+    {{ range $youtube_index, $youtube := $record.youtube_links }}
+      {{ partial "essential/youtube.html" (dict "context_id" $record_index "context" $record "youtube_id" $youtube_index "youtube" $youtube) }}
+    {{ end }}
+  {{ end }}
+</div>
 
 <script>
   modals = {}
@@ -25,6 +32,7 @@
     if (event.target.id.startsWith("myModal")) {
       modal = event.target;
       modal.style.display = "none";
+      document.body.classList.remove("modal-open");
     }
   }
 
@@ -41,6 +49,8 @@
     // When the user clicks on the button, open the modal
     btns[id].onclick = function() {
       modals[id].style.display = "block";
+      document.body.classList.add("modal-open");
+      return false;
     }
 
     // When the user clicks on <span> (x), close the modal
