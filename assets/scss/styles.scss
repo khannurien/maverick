@@ -247,14 +247,3 @@ img {
     float: right;
     border-radius: 50%;
 }
-
-ul#breadcrumbs li {
-    display: inline;
-    text-align: center;
-    padding: 0.2rem;
-    margin: 0;
-}
-
-ul#breadcrumbs li::before {
-    content: "⇱ ";
-}

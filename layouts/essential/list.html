@@ -8,6 +8,7 @@
         {{ partial "header.html" . }}
         <section>
           {{ partial "breadcrumbs.html" . }}
+          {{ .Content }}
           {{ if (eq .CurrentSection .FirstSection) }}
             <ul>
               {{ range .Sections.ByTitle }}
