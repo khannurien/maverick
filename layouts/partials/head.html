@@ -2,7 +2,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Liste - {{ .Site.BaseURL }}">
+    <meta name="author" content="{{ .Site.Params.author }}">
     <title>{{ if eq .IsHome true }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
     <meta name="description" content="{{ if ne .Description "" }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
     {{ template "_internal/opengraph.html" . }}
@@ -22,6 +22,7 @@
     {{ $styles := resources.Get "scss/styles.scss" | toCSS (dict "outputStyle" "compressed") | minify }}
     {{ $styles_extra := resources.Get "scss/_extra.scss" | toCSS (dict "outputStyle" "compressed") | minify }}
     <style>{{ $styles.Content | safeCSS }} {{ $styles_extra.Content | safeCSS }}</style>
+    <link rel="stylesheet" href="https://unpkg.com/blocks.css/dist/blocks.min.css" />
   
     {{ if .IsHome -}}
   <script type="application/ld+json">
@@ -36,7 +37,7 @@
   }
   </script>
   {{ else if .IsPage }}
-  {{ $author :=  or (.Params.author) (.Site.Author.name) }}
+  {{ $author :=  or (.Params.author) (.Site.Params.author) }}
   {{ $org_name :=  .Site.Title }}
   <script type="application/ld+json">
   {

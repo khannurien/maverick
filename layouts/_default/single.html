@@ -1,33 +1,33 @@
 <!doctype html>
 <html lang="en">
   {{ partial "head.html" . }}
-<body>
-  <a class="skip-link" href="#main">Skip to main</a>
-  <main id="main">
-  <div class="content">
-    {{ partial "header.html" . }}
-    <section>
-      {{ partial "breadcrumbs.html" . }}
-      <h2 class="post {{ if .Params.hide_title }}hidden{{ end }}">{{ .Title }}</h2>
-      {{ if eq .Section "posts" }}
-      <div class="post-date">
-        <span class="g time">📅 {{.Date.Format "January 2, 2006"}} </span> &#8212;
-        {{ $taxonomy := "tags" }} {{ with .Param $taxonomy }}
-        {{ range $index, $tag := . }} {{ with $.Site.GetPage (printf "/%s/%s"
-        $taxonomy $tag) -}} 🏷️
-        <a href="{{ .Permalink }}">{{ $tag | urlize }}</a>
-        {{- end -}} {{- end -}}
+  <body>
+    <a class="skip-link" href="#main">Skip to main</a>
+    <main id="main">
+      <div class="content">
+        {{ partial "header.html" . }}
+        <section>
+          {{ partial "breadcrumbs.html" . }}
+          <h2 class="post {{ if .Params.hide_title }}hidden{{ end }}">{{ .Title }}</h2>
+          {{ if eq .Section "posts" }}
+          <div class="post-date">
+            <span class="g time">📅 {{.Date.Format "January 2, 2006"}} </span> &#8212;
+            {{ $taxonomy := "tags" }} {{ with .Param $taxonomy }}
+            {{ range $index, $tag := . }} {{ with $.Site.GetPage (printf "/%s/%s"
+            $taxonomy $tag) -}} 🏷️
+            <a href="{{ .Permalink }}">{{ $tag | urlize }}</a>
+            {{- end -}} {{- end -}}
+            {{ end }}
+          </div>
+          {{ end }}
+          {{ .Content }}
+        </section>
+        {{ if eq .Section "posts" }}
+        <div id="comments">
+          {{ partial "comments.html" $ }}
+        </div>
         {{ end }}
       </div>
-      {{ end }}
-      {{ .Content }}
-    </section>
-    {{ if eq .Section "posts" }}
-    <div id="comments">
-      {{ partial "comments.html" $ }}
-    </div>
-    {{ end }}
-  </div>
-</main>
-</body>
+    </main>
+  </body>
 </html>

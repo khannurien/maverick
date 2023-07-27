@@ -1,0 +1,15 @@
+{{ range $index, $label := .Params.labels }}
+<div class="essential-item card fixed block">
+  <div class="essential-item-header">
+    <span>{{ $label.name }}</span>
+  </div>
+  <div class="essential-item-content">
+    <img src="../{{ $label.image }}" />
+  </div>
+  <div class="essential-item-footer">
+    {{ range $link := $label.links }}
+      <a href="{{ .url }}">{{ .name }}</a>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

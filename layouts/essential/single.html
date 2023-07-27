@@ -8,25 +8,13 @@
         {{ partial "header.html" . }}
         <section>
           {{ partial "breadcrumbs.html" . }}
-          {{ .Content }}
           <div class="essential">
             <div class="wrapper">
-              {{ range $index, $record := .Params.records }}
-                <div class="essential-item">
-                  <div class="essential-item-header">
-                    <span>{{ $record.artist }} - <a href="{{ $record.url_discogs }}">{{ $record.album }}</a> ({{ $record.year }})</span>
-                  </div>
-                  <div class="essential-item-content">
-                    <img src="../{{ $record.cover }}" />
-                  </div>
-                  <div class="essential-item-footer">
-                    {{ range $youtube_link := $record.youtube_links }}
-                      <a href="{{ .url }}">{{ .name }}</a>
-                    {{ end }}
-                  </div>
-                </div>
+              {{ if eq .Parent.Name "Essential Labels" }}
+                {{ partial "essential/labels.html" . }}
+              {{ else if eq .Parent.Name "Essential Records" }}
+                {{ partial "essential/records.html" . }}
               {{ end }}
-              </div>
             </div>
           </div>
         </section>
