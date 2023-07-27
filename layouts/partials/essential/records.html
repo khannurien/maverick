@@ -25,14 +25,13 @@
 <script>
   modals = {}
   btns = {}
-  spans = {}
+  // spans = {}
 
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function(event) {
     if (event.target.id.startsWith("myModal")) {
       modal = event.target;
       modal.style.display = "none";
-      document.body.classList.remove("modal-open");
     }
   }
 
@@ -44,19 +43,20 @@
     btns[id] = document.getElementById("myBtn-" + id);
 
     // Get the <span> element that closes the modal
-    spans[id] = document.getElementById("close-" + id);
+    // spans[id] = document.getElementById("close-" + id);
 
     // When the user clicks on the button, open the modal
     btns[id].onclick = function() {
       modals[id].style.display = "block";
-      document.body.classList.add("modal-open");
       return false;
     }
 
     // When the user clicks on <span> (x), close the modal
+    /*
     spans[id].onclick = function() {
       modals[id].style.display = "none";
     }
+    */
   }
 
   for (i = 0; i < document.getElementsByClassName("modal").length; i++) {
