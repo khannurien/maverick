@@ -68,7 +68,7 @@ a:visited {
 
 a:hover,
 a.heading-link {
-    text-decoration: none
+    text-decoration: none;
 }
 
 pre {
@@ -133,14 +133,18 @@ header ul {
     list-style-type: none;
     padding: 0;
     //border-right: 1px solid #edf2f7;
-
 }
 
 header li, header a {
     //margin-bottom: .2rem;
     //text-align: right;
     //margin-right: 2rem;
+    margin: 0;
     display: inline;
+}
+
+header ul a {
+    padding: 0.2em !important;
 }
 
 h2.post {

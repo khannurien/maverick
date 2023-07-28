@@ -2,8 +2,16 @@ html {
     width: 100vw;
 }
 
+pre {
+    overflow-x: auto;
+}
+
 .hidden {
     display: none;
+}
+
+.round a {
+    text-decoration: none;
 }
 
 ul#breadcrumbs li {
