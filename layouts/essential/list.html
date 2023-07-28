@@ -10,23 +10,46 @@
           {{ partial "breadcrumbs.html" . }}
           {{ .Content }}
           {{ if (eq .CurrentSection .FirstSection) }}
-            <ul>
-              {{ range .Sections.ByTitle }}
-                <li>            
-                  <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                  {{ partial "recursive.html" . }}
-                </li>
-              {{ end }}
-            </ul>
+            <div class="essential">
+              <div class="wrapper">
+                {{ range .Sections.ByTitle }}
+                <div class="essential-item card fixed block">
+                  <div class="essential-item-header">
+                    <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+                  </div>
+                  <div class="essential-item-content">
+                    <a href="{{ .RelPermalink }}"><img src="{{ .Params.image }}" /></a>
+                  </div>
+                  <div class="essential-item-footer">
+                    {{ partial "recursive.html" . }}
+                  </div>
+                </div>
+                {{ end }}
+              </div>
+            </div>
           {{ else }}
-            <ul class="postlist">
-              {{ .RegularPages }}
-              {{ range .RegularPages }}
-              <li>
-                <a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a>
-              </li>
-              {{ end }}
-            </ul>
+            <div class="essential">
+              <div class="wrapper">
+                {{ range $regular_page := .RegularPages }}
+                <div class="essential-item card fixed block">
+                  <div class="essential-item-header">
+                    <h2><a href="{{ $regular_page.RelPermalink }}">{{ $regular_page.Title | markdownify }}</a></h2>
+                  </div>
+                  <div class="essential-item-content">
+                    <div class="wrapper-small">
+                      {{ range $item_image := .Params.images }}
+                        <div class="essential-item-small">
+                          <a href="{{ $regular_page.RelPermalink }}"><img src="{{ $item_image }}" /></a>
+                        </div>
+                      {{ end }}
+                    </div>
+                  </div>
+                  <div class="essential-item-footer">
+                  </div>
+                </div>
+                {{ end }}
+              </div>
+            </div>
           {{ end }}
         </section>
       </div>

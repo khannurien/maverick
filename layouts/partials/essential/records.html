@@ -1,12 +1,14 @@
 <div class="essential essential-record">
   <div class="wrapper">
     {{ range $record_index, $record := .Params.records }}
-    <div class="essential-item card fixed block">
+    <div class="essential-item card block">
       <div class="essential-item-header">
-        <span>{{ $record.artist }} - <a href="{{ $record.url_discogs }}">{{ $record.album }}</a> ({{ $record.year }})</span>
+        <span>{{ $record.artist }} - <a href="{{ $record.url_discogs }}">{{ $record.album }}</a> <small>({{ $record.year }})</small></span>
       </div>
       <div class="essential-item-content">
-        <a data-src='{{ index (index $record.youtube_links 0) "id" }}' href="#" onclick="createModal(this); return false;"><img src="../{{ $record.cover }}" /></a>
+        <a data-src='{{ index (index $record.youtube_links 0) "id" }}' href="#" onclick="createModal(this); return false;">
+          <img src="../{{ $record.cover }}" />
+        </a>
       </div>
       <div class="essential-item-footer">
         {{ range $youtube_index, $youtube := $record.youtube_links }}
@@ -14,8 +16,8 @@
         {{ end }}
       </div>
     </div>
+    </a>
     {{ end }}
-  </div>
 </div>
 
 {{ partial "essential/youtube.html" }}

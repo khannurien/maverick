@@ -17,10 +17,31 @@ ul#breadcrumbs li::before {
     content: "⇱ ";
 }
 
+ul.reset {
+   margin: 0;
+   padding: 0;
+   text-indent: 0;
+   list-style-type: none;
+}
+
+ul.reset li {
+    margin: 1rem 0 1rem 0;
+}
+
 .wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
     gap: 0.8rem;
+}
+
+.wrapper-small {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8em, 2fr));
+    gap: 0;
+}
+
+.wrapper-small > .essential-item-small {
+    line-height: 0;
 }
 
 .essential-item {
