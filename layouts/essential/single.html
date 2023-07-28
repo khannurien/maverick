@@ -8,16 +8,14 @@
         {{ partial "header.html" . }}
         <section>
           {{ partial "breadcrumbs.html" . }}
-          {{ .Content }}
-          <div class="essential">
-            <div class="wrapper">
-              {{ if eq .Parent.Name "Essential Labels" }}
-                {{ partial "essential/labels.html" . }}
-              {{ else if eq .Parent.Name "Essential Records" }}
-                {{ partial "essential/records.html" . }}
-              {{ end }}
-            </div>
-          </div>
+          {{ if eq .Parent.Name "Essential Labels" }}
+            <iframe width="100%" height="450" frameborder="0" title="Felt Map" src="https://felt.com/embed/map/Untitled-Map-US9BKA9AzVSqeNB266iKDpOC?loc=51.5073,-0.1276,11.51z"></iframe>
+            {{ .Content }}
+            {{ partial "essential/labels.html" . }}
+          {{ else if eq .Parent.Name "Essential Records" }}
+            {{ .Content }}
+            {{ partial "essential/records.html" . }}
+          {{ end }}
         </section>
       </div>
     </main>

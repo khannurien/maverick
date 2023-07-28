@@ -1,65 +1,41 @@
-{{ range $record_index, $record := .Params.records }}
-<div class="essential-item card fixed block">
-  <div class="essential-item-header">
-    <span>{{ $record.artist }} - <a href="{{ $record.url_discogs }}">{{ $record.album }}</a> ({{ $record.year }})</span>
-  </div>
-  <div class="essential-item-content">
-    <a id="myBtn-{{ $record_index }}-0" href="#"><img src="../{{ $record.cover }}" /></a>
-  </div>
-  <div class="essential-item-footer">
-    {{ range $youtube_index, $youtube := $record.youtube_links }}
-      <a href="{{ $youtube.url }}">{{ $youtube.name }}</a>
+<div class="essential essential-record">
+  <div class="wrapper">
+    {{ range $record_index, $record := .Params.records }}
+    <div class="essential-item card fixed block">
+      <div class="essential-item-header">
+        <span>{{ $record.artist }} - <a href="{{ $record.url_discogs }}">{{ $record.album }}</a> ({{ $record.year }})</span>
+      </div>
+      <div class="essential-item-content">
+        <a data-src='{{ index (index $record.youtube_links 0) "id" }}' href="#" onclick="createModal(this); return false;"><img src="../{{ $record.cover }}" /></a>
+      </div>
+      <div class="essential-item-footer">
+        {{ range $youtube_index, $youtube := $record.youtube_links }}
+          <span><a href="{{ $youtube.url }}" title="{{ $record.artist }} - {{ $youtube.name }}">[{{ add $youtube_index 1 }}]</a></span>
+        {{ end }}
+      </div>
+    </div>
     {{ end }}
   </div>
 </div>
-{{ end }}
 
-<div id="modal-node">
-  {{ range $record_index, $record := .Params.records }}
-    {{ range $youtube_index, $youtube := $record.youtube_links }}
-      {{ partial "essential/youtube.html" (dict "context_id" $record_index "context" $record "youtube_id" $youtube_index "youtube" $youtube) }}
-    {{ end }}
-  {{ end }}
-</div>
+{{ partial "essential/youtube.html" }}
 
 <script>
-  modals = {}
-  btns = {}
-  // spans = {}
+  function createModal(target) {
+    const template = document.getElementById('essential-modal');
+    const modal = template.content.firstElementChild.cloneNode(true);
 
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-    if (event.target.id.startsWith("myModal")) {
-      modal = event.target;
-      modal.style.display = "none";
-    }
-  }
-
-  function createModal(id) {
-    // Get the modal
-    modals[id] = document.getElementById("myModal-" + id);
-
-    // Get the button that opens the modal
-    btns[id] = document.getElementById("myBtn-" + id);
-
-    // Get the <span> element that closes the modal
-    // spans[id] = document.getElementById("close-" + id);
-
-    // When the user clicks on the button, open the modal
-    btns[id].onclick = function() {
-      modals[id].style.display = "block";
-      return false;
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.remove();
+      }
     }
 
-    // When the user clicks on <span> (x), close the modal
-    /*
-    spans[id].onclick = function() {
-      modals[id].style.display = "none";
-    }
-    */
-  }
+    const iframe = modal.querySelector('iframe');
+    iframe.src = "https://www.youtube.com/embed/" + target.dataset.src;
 
-  for (i = 0; i < document.getElementsByClassName("modal").length; i++) {
-    createModal(i + "-0");
+    const modal_node = document.getElementById('modal-node');
+    modal_node.appendChild(modal);
   }
 </script>

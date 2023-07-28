@@ -1,32 +1,11 @@
-<div id="myModal-{{ .context_id }}-{{ .youtube_id }}" class="modal">
-  <div class="modal-content">
-    <!-- <span id="close-{{ .context_id }}-{{ .youtube_id }}" class="close">&times;</span> -->
-    <div class="embed-container">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ .youtube.id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<div id="modal-node">
+  <template id="essential-modal">
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <div class="embed-container">
+          <iframe width="560" height="315" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
     </div>
-  </div>
+  </template>
 </div>
-
-<!--
-
-<template id="essential-modal">
-  <div id="modal">...</div>
-</template>
-
-<div class="modal-content">
-  <span id="close-0-0" class="close">×</span>
-  <iframe title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" width="560" height="315" frameborder="0"></iframe>
-</div>
-
-// On click:
-
-const template = document.getElementById('essential-modal');
-const modal = template.cloneNode(true);
-const close = modal.querySelector('.close');
-const iframe = modal.querySelector('iframe');
-
-close.addEventListner('click', (e) => modal.remove());
-iframe.src = e.target.data['src'];
-document.body.appendChild(modal);
-
--->

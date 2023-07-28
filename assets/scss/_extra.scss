@@ -19,8 +19,8 @@ ul#breadcrumbs li::before {
 
 .wrapper {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.8em;
+    grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
+    gap: 0.8rem;
 }
 
 .essential-item {
@@ -31,7 +31,7 @@ ul#breadcrumbs li::before {
 }
 
 .essential-item > div {
-    padding: 0.5em;
+    padding: 0.5rem;
     text-align: center;
 }
 
@@ -40,9 +40,13 @@ ul#breadcrumbs li::before {
     margin-bottom: auto;
 }
 
+.essential-record .essential-item > .essential-item-footer {
+    font-size: 0.8rem;
+    color: #d3d3d3
+}
+
  /* The Modal (background) */
  .modal {
-    display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
@@ -57,11 +61,9 @@ ul#breadcrumbs li::before {
 
 /* Modal Content/Box */
 .modal-content {
-    // background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
-    // border: 1px solid #888;
-    width: 30%; /* Could be more or less, depending on screen size */
+    width: 30vw;
     text-align: center;
     filter: drop-shadow(5px 5px 30px black);
 }
@@ -87,7 +89,6 @@ ul#breadcrumbs li::before {
     overflow: hidden;
     max-width: 100%;
     height: auto;
-    // border: 5px solid white;
 } 
 
 .embed-container iframe,
