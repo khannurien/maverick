@@ -45,6 +45,11 @@ ul#breadcrumbs li::before {
     color: #d3d3d3
 }
 
+.essential-label .essential-item > .essential-item-footer {
+    font-size: 0.8rem;
+    color: #d3d3d3
+}
+
  /* The Modal (background) */
  .modal {
     position: fixed; /* Stay in place */
@@ -53,7 +58,7 @@ ul#breadcrumbs li::before {
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+    overflow: hidden; /* Disable scroll */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     backdrop-filter: blur(2px);
@@ -61,7 +66,7 @@ ul#breadcrumbs li::before {
 
 /* Modal Content/Box */
 .modal-content {
-    margin: 15% auto;
+    margin: 10% auto;
     padding: 20px;
     width: 40%;
     text-align: center;
@@ -112,24 +117,9 @@ ul#breadcrumbs li::before {
 
 @media all and (min-width: 1440px) and (max-width: 1980px) {
     .modal-content {
-        margin: 20% auto;
+        margin: 10% auto;
         width: 50%;
     }
-}
-
-/* The Close Button */
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
 }
 
 .embed-container { 

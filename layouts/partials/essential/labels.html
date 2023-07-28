@@ -1,16 +1,16 @@
-<div class="essential">
+<div class="essential essential-label">
   <div class="wrapper">
     {{ range $index, $label := .Params.labels }}
     <div class="essential-item card fixed block">
       <div class="essential-item-header">
-        <span>{{ $label.name }}</span>
+        <span>{{ $label.name }} <small>({{ $label.location }})</small></span>
       </div>
       <div class="essential-item-content">
         <img src="../{{ $label.image }}" />
       </div>
       <div class="essential-item-footer">
         {{ range $link := $label.links }}
-          <a href="{{ .url }}">{{ .name }}</a>
+          <span><a href="{{ .url }}">[{{ .name }}]</a></span>
         {{ end }}
       </div>
     </div>
