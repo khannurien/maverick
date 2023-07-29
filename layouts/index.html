@@ -7,6 +7,7 @@
     <div class="content">
       {{ partial "header.html" . }}
       {{ .Content }}
+      <!-- FIXME: Use grid -->
       {{ range $link := .Params.links }}
         <span class="block round inline"><a href="{{ $link.url }}">{{ $link.name }}</a></span>
       {{ end }}

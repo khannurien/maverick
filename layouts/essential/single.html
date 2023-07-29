@@ -9,7 +9,9 @@
         <section>
           {{ partial "breadcrumbs.html" . }}
           {{ if eq .Parent.Name "Essential Labels" }}
-            <iframe width="100%" height="450" frameborder="0" title="Felt Map" src="https://felt.com/embed/map/Essential-Electronic-Labels-US9BKA9AzVSqeNB266iKDpOC?loc=47.44,-37.44,3z"></iframe>
+            {{ if isset .Params "map" }}
+              {{ partial "essential/map.html" . }}
+            {{ end }}
             {{ .Content }}
             {{ partial "essential/labels.html" . }}
           {{ else if eq .Parent.Name "Essential Records" }}
