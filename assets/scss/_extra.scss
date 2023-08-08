@@ -41,6 +41,12 @@ ul.reset li {
     margin: 1rem 0 1rem 0;
 }
 
+.wrapper-big {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+    gap: 0.8rem;
+}
+
 .wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));

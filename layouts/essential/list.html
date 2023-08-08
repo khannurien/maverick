@@ -11,7 +11,7 @@
           {{ .Content }}
           {{ if (eq .CurrentSection .FirstSection) }}
             <div class="essential">
-              <div class="wrapper">
+              <div class="wrapper-big">
                 {{ range .Sections.ByTitle }}
                 <div class="essential-item card fixed block">
                   <div class="essential-item-header">
@@ -29,7 +29,7 @@
             </div>
           {{ else }}
             <div class="essential">
-              <div class="wrapper">
+              <div class="wrapper-big">
                 {{ range $regular_page := .RegularPages }}
                 <div class="essential-item card fixed block">
                   <div class="essential-item-header">
