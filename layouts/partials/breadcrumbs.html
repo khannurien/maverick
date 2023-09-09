@@ -1,8 +1,8 @@
 <ul id="breadcrumbs">
   {{- range .Ancestors.Reverse }}
   {{ if not (eq .RelPermalink "/") }}
-    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    <li><small><a href="{{ .RelPermalink }}">{{ .Title }}</a></small></li>
   {{ end }}
   {{- end }}
-  <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+  <li><small><a href="{{ .RelPermalink }}">{{ .Title }}</a></small></li>
 </ul>
