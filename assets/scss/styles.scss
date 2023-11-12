@@ -264,19 +264,13 @@ img {
 
 .main-links {
     display: grid; 
-    grid-auto-flow: column;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-areas: 
-        ". . . . ."
-        ". . . . ."
-        ". . . . .";
+    grid-template-columns: repeat(auto-fill, minmax(100px, 2fr));
     grid-column-gap: 10px;
     grid-row-gap: 10px;
 }
 
 .main-links span {
-    display: flex;
-    flex-wrap: wrap;
+    display: inline-grid !important;
+    align-items: center;
     text-align: center;
 }
