@@ -1,11 +1,11 @@
 <header>
-  <p style="padding: 0; margin: 0;">
+  <p class="header-title">
     <a href="/">
       <b>{{ .Site.Title }}</b>
-      <span class="text-stone-500 animate-blink">💔</span><span style="opacity: 0.5">🤍🤍</span>
+      <span><span class="text-stone-500 animate-blink">💔</span><span style="opacity: 0.5">🤍🤍</span></span>
     </a>
   </p>
-  <ul style="padding: 0; margin: 0;">
+  <ul class="header-nav">
     {{ $currentPage := . }}
     {{ range .Site.Menus.main }}
       <li class="round block inline {{ if $currentPage.HasMenuCurrent "main" . }}active{{ end }}">
@@ -14,4 +14,4 @@
     {{ end }}
   </ul>
 </header>
-<hr class="hr-list" style="padding: 0; margin: 0;">
+<hr class="hr-list">

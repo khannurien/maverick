@@ -7,10 +7,11 @@
     <div class="content">
       {{ partial "header.html" . }}
       {{ .Content }}
-      <!-- FIXME: Use grid -->
-      {{ range $link := .Params.links }}
-        <span class="block round inline"><a href="{{ $link.url }}">{{ $link.name }}</a></span>
-      {{ end }}
+      <div class="main-links">
+        {{ range $link := .Params.links }}
+          <span class="block round inline"><a href="{{ $link.url }}">{{ $link.name }}</a></span>
+        {{ end }}
+      </div>
       {{ if gt (len ( where .Site.RegularPages "Section" "posts" )) 0 }}
       <h1>Latest Post</h1>
       <section>

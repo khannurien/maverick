@@ -17,10 +17,7 @@ body {
   position: absolute;
   top: -40px;
   left: 0;
-  //margin: 1.5rem 0;
   background: #eee;
-  //color: white;
-  //padding: 1.5rem;
   z-index: 100;
 }
 
@@ -125,20 +122,40 @@ header {
     padding-bottom: 1rem;
 }
 
+header p.header-title {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+header p.header-title a {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: .5rem;
+}
+
 header a {
     text-decoration: none;
+}
+
+header ul.header-nav li a {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+header ul.header-nav {
+    margin: 0;
+    padding: 0;
 }
 
 header ul {
     list-style-type: none;
     padding: 0;
-    //border-right: 1px solid #edf2f7;
 }
 
 header li, header a {
-    //margin-bottom: .2rem;
-    //text-align: right;
-    //margin-right: 2rem;
     margin: 0;
     display: inline;
 }
@@ -172,6 +189,7 @@ header ul a:first-child {
 }
 
 .hr-list {
+    padding: 0;
     margin-top: 0;
     margin-bottom: 0;
     margin-right: .5rem;
@@ -180,7 +198,6 @@ header ul a:first-child {
     border: 0;
     border-bottom: 1px dotted #ccc;
     flex: 1 0 1rem;
-    //opacity: .25;
 }
 
 .m,
@@ -206,7 +223,6 @@ img {
 .animate-blink {
     animation: opacity 1s infinite;
     opacity: 1;
-    // margin-left: -1%;
 }
 
 @keyframes opacity {
@@ -244,4 +260,23 @@ img {
     margin: -10px 0 0 15px;
     float: right;
     border-radius: 50%;
+}
+
+.main-links {
+    display: grid; 
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: 
+        ". . . . ."
+        ". . . . ."
+        ". . . . .";
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+
+.main-links span {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
 }
